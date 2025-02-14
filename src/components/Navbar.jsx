@@ -13,7 +13,13 @@ const menuItems = [
 const socialLinks = [
     { icon: <BsLinkedin />, href: "https://www.linkedin.com/in/thamindu-sharitha-509a70229/", color: 'text-blue-300' },
     { icon: <BsGithub />, href: "https://github.com/Thamindu-Galappaththi", color: 'text-purple-500' },
-    { icon: <BsFileEarmarkArrowDown />, href: `${import.meta.env.VITE_PUBLIC_URL}/Thamindu_CV.pdf`, color: 'text-green-500', title: "Download CV" }
+    { 
+        icon: <BsFileEarmarkArrowDown />, 
+        href: "/Thamindu_Portfolio/Thamindu_CV.pdf", 
+        color: "text-green-500", 
+        title: "Download CV" 
+      }
+      
 
 ];
 
