@@ -14,20 +14,22 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v3
 
-      - name: Setup Node
+      - name: Setup Node.js
         uses: actions/setup-node@v3
+        with:
+          node-version: 18  # Adjust if your project requires a different version
 
       - name: Install dependencies
-        uses: bahmutov/npm-install@v1
+        run: npm ci  # Better than bahmutov/npm-install@v1 for CI environments
 
       - name: Build project
-        run: npm run build
+        run: npm run build  # Ensure this outputs to ./dist
 
       - name: Upload production-ready build files
         uses: actions/upload-artifact@v3
         with:
           name: production-files
-          path: ./dist
+          path: ./dist  # Ensure your build files exist here
 
   deploy:
     name: Deploy
@@ -40,10 +42,10 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: production-files
-          path: ./dist
+          path: ./dist  # Ensure this matches the upload path
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist
+          publish_dir: ./dist  # Removed "fix this"
